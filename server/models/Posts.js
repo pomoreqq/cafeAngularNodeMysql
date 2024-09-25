@@ -4,7 +4,7 @@ const sequelize = new Sequelize('tutorialNodeReact', 'pomoreq', 'Hania135!', {
   dialect: 'mysql'
 });
 
-const Posts = sequelize.define('Posts', {
+const Posts = sequelize.define('Post', {
   title: {
     type: DataTypes.STRING,
     allowNull: false
