@@ -2,10 +2,12 @@ import React from 'react'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import '../App.css'
 import * as Yup from 'yup'
-
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function CreatePost() {
+
+    let navigate = useNavigate()
 
     const initialValues = {
         title: '',
@@ -24,10 +26,11 @@ function CreatePost() {
 
     const handleSubmit = (data) => {
         axios.post('http://localhost:4000/posts', data).then((response) => {
-            console.log('It inserted to database')
+            navigate('/')
         })
     }
-
+    
+    
   return (
     <div className='createPostPage'>
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>

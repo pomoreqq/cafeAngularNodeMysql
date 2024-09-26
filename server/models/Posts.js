@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
+
 const sequelize = new Sequelize('tutorialNodeReact', 'pomoreq', 'Hania135!', {
   host: 'localhost',
   dialect: 'mysql'
@@ -18,6 +19,8 @@ const Posts = sequelize.define('Post', {
     allowNull: false
   }
 });
+
+
 
 
 module.exports = { sequelize, Posts };
