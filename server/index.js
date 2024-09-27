@@ -6,12 +6,23 @@ const {Comments} = require('./models/Comments.js')
 const {Posts} = require('./models/Posts.js')
 const postRouter = require('./routes/Posts.js');
 const commentRouter = require('./routes/Comments.js')
+const userRouter = require('./routes/Users.js')
+const {Users} = require('./models/Users.js')
 app.use(cors())
 app.use(express.json());
 
 app.use('/posts', postRouter); 
 app.use('/comments', commentRouter); 
+app.use('/auth',userRouter)
 
+Users.hasMany(Posts, {
+  foreignKey: 'userId',
+  onDelete:'CASCADE'
+})
+
+Posts.belongsTo(Users,{
+  foreignKey: 'userId'
+})
 
 Posts.hasMany(Comments, {
     foreignKey: 'postId',   
